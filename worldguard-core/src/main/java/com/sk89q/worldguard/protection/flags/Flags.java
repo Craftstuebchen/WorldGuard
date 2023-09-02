@@ -58,6 +58,7 @@ public final class Flags {
     public static final StateFlag BLOCK_PLACE = register(new StateFlag("block-place", false));
     public static final StateFlag USE = register(new StateFlag("use", false));
     public static final StateFlag INTERACT = register(new StateFlag("interact", false));
+    public static final StateFlag EDIT_SIGN = register(new StateFlag("edit-sign", false));
     public static final StateFlag DAMAGE_ANIMALS = register(new StateFlag("damage-animals", false));
     public static final StateFlag PVP = register(new StateFlag("pvp", false));
     public static final StateFlag SLEEP = register(new StateFlag("sleep", false));

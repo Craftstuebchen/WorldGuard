@@ -19,6 +19,7 @@
 
 package com.sk89q.worldguard.bukkit.listener;
 
+import com.destroystokyo.paper.MaterialTags;
 import com.google.common.base.Predicate;
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldguard.LocalPlayer;
@@ -286,6 +287,11 @@ public class RegionProtectionListener extends AbstractListener {
             } else if (type == Material.TNT) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.INTERACT, Flags.TNT));
                 what = "use explosives";
+
+            /* SIGNS - disallow editing signs even if interacting is allowed */
+            } else if (MaterialTags.SIGNS.isTagged(type)) {
+                canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.EDIT_SIGN));
+                what = "edit signs";
 
             /* Legacy USE flag */
             } else if (Materials.isUseFlagApplicable(type)) {
